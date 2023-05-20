@@ -4,9 +4,6 @@ import json
 import torch
 from Regression.regresie import RegersionClass
 import albumentations as A
-import tqdm
-from torchmetrics import MeanSquaredError
-import pandas as pd 
 from Regression.distances_regression import calculate_distance , pixels2mm
 
 
@@ -45,7 +42,6 @@ class DEMO_PredicitionClass:
 
             for step, (input, gt, pred) in enumerate(zip(x, y, y_pred)):
 
-                np_input = input.cpu().detach().numpy()*255
                 gt = gt.cpu().detach().numpy()*255
 
                 pred = pred.cpu().detach().numpy()*255

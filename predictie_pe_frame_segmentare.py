@@ -3,13 +3,8 @@ import numpy as np
 import json
 import torch
 from Segmentation.angio_class import AngioClass
-import albumentations as A
-import tqdm
-from torchmetrics import MeanSquaredError
-import pandas as pd 
 from Segmentation.blob_detector import blob_detector
 import torch.nn.functional as F
-from Segmentation.UNet import UNet
 from Segmentation.distances import calcuate_distance, pixels2mm
 class DEMO_PredicitionClass_seg:
     
@@ -41,8 +36,6 @@ class DEMO_PredicitionClass_seg:
 
                 pred[pred > 0.5] = 1
                 pred[pred <= 0.5] = 0
-
-                np_input = input.cpu().detach().numpy()
                 np_gt = gt.cpu().detach().numpy()
                 
                  
