@@ -1,13 +1,10 @@
 
 import os
 import sys
-
-from Regression.regresie import RegersionClass
 import json
 from predictie_pe_frame import DEMO_PredicitionClass
 from predictie_pe_frame_segmentare import DEMO_PredicitionClass_seg
 import numpy as np
-import pandas as pd 
 from PyQt5 import uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -38,9 +35,6 @@ class DEMOWidow(QMainWindow):
         QMainWindow.__init__(self)
         uic.loadUi("demo.ui", self)
         self.show()
-
-       #self.angio_view.mousePressEvent = self.on_image_view_mousePressEvent
-       #self.angio_view.wheelEvent = self.on_image_view_wheelEvent
         self.data=0
         self.angio = None
         self.clipping_points = {}
@@ -88,8 +82,6 @@ class DEMOWidow(QMainWindow):
 
     @pyqtSlot()
     def on_previous_case_btn_clicked(self):
-        #with open(self.annotation_path, "w") as f:
-           #json.dump(self.clipping_points, f, indent=2, sort_keys=True)
 
         self.current_case_idx -= 1
         self.current_case_idx %= len(self.cases)
@@ -97,30 +89,16 @@ class DEMOWidow(QMainWindow):
 
     @pyqtSlot()
     def on_next_case_btn_clicked(self):
-        #with open(self.annotation_path, "w") as f:
-           # json.dump(self.clipping_points, f, indent=2, sort_keys=True)
 
         self.current_case_idx += 1
         self.current_case_idx %= len(self.cases)
         self.load_case(self.cases[self.current_case_idx])
-
-    def on_image_view_mousePressEvent(self, event):
-        if self.distal_pts_btn.isChecked():
-            pos = (event.pos().y(), event.pos().x())
-            self.clipping_points[str(self.current_frame)] = pos
-            self.update_image_view()
 
     def on_image_view_wheelEvent(self, event):
         if event.angleDelta().y() > 0:
             self.on_previous_frame_btn_clicked()
         else:
             self.on_next_frame_btn_clicked()
-
-    def on_image_view_mouseMoveEvent(self, event):
-        pass
-
-    def on_image_view_mouseReleaseEvent(self, event):
-        pass
 
     def load_case(self, case_path):
         self.current_case=case_path
