@@ -20,14 +20,13 @@ class DEMO_PredicitionClass_seg:
         test_ds=AngioClass(self.angio,self.clipping_point) 
 
         test_loader = torch.utils.data.DataLoader(test_ds, batch_size=1, shuffle=False)
-        
-        print ("LEN",len(test_loader))
+  
         for batch_index, batch in enumerate(test_loader):
             x, y = iter(batch)
 
             self.network.eval()
             x = x.type(torch.cuda.FloatTensor)
-            print(x.shape)
+
             y_pred = self.network(x.to(device='cuda:0'))
 
 
@@ -41,7 +40,7 @@ class DEMO_PredicitionClass_seg:
                  
                 clipping_points_list=blob_detector(pred)
                 copie_pred=clipping_points_list
-                print (pred.shape, np_gt.shape)
+  
                 gt=blob_detector(np_gt[0])
                 pred_mm=pixels2mm(copie_pred,self.metadata['MagnificationFactor'], self.metadata['ImageSpacing'] )
                 gt_mm=pixels2mm(gt,self.metadata['MagnificationFactor'], self.metadata['ImageSpacing'] )

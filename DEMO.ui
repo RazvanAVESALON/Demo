@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>NEXT FRAME</string>
+     <string>Următorul cadru</string>
     </property>
    </widget>
    <widget class="QPushButton" name="previous_frame_btn">
@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PREVIOUS FRAME</string>
+     <string>Cadrul precedent</string>
     </property>
    </widget>
    <widget class="QPushButton" name="open_btn">
@@ -56,7 +56,7 @@
      </sizepolicy>
     </property>
     <property name="text">
-     <string>Open Study</string>
+     <string>Deschide Angiografie</string>
     </property>
    </widget>
    <widget class="QLabel" name="angio_view">
@@ -120,7 +120,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Patient</string>
+     <string>Pacient</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -133,7 +133,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Acquisition</string>
+     <string>Achiziție</string>
     </property>
    </widget>
    <widget class="QSlider" name="slider">
@@ -177,7 +177,7 @@
      </sizepolicy>
     </property>
     <property name="text">
-     <string>Next Case</string>
+     <string>Următorul caz</string>
     </property>
    </widget>
    <widget class="QPushButton" name="previous_case_btn">
@@ -196,7 +196,7 @@
      </sizepolicy>
     </property>
     <property name="text">
-     <string>Previous Case</string>
+     <string>Cazul Precedent</string>
     </property>
    </widget>
    <widget class="QPushButton" name="find_btn">

@@ -139,10 +139,15 @@ class DEMOWidow(QMainWindow):
         self.angio_view.setFixedWidth(self.metadata["ImageSize"][1])
         self.angio_view.setFixedHeight(self.metadata["ImageSize"][0])
         self.angio_view.setPixmap(QPixmap(qimage))
-
+        print ('Predictie puncte',self.prediction_clipping_points)
+                
+        clip= self.prediction_clipping_points[str(self.current_frame)]
         if self.find_btn.isChecked():
             if self.reg_check.isChecked():
-                predictie, distance=DEMO_PredicitionClass(self.angio[self.current_frame],self.prediction_clipping_points[str(self.current_frame)],self.metadata).__predict__()
+                distance=0
+               
+                
+                predictie, distance = DEMO_PredicitionClass(self.angio[self.current_frame],clip,self.metadata).__predict__()
                 
                 self.dist.setText(str(distance))
                 painter = QPainter(self.angio_view.pixmap())
@@ -153,7 +158,8 @@ class DEMOWidow(QMainWindow):
 
                 painter.end()
             elif self.seg_check.isChecked():
-                predictie , distance =DEMO_PredicitionClass_seg(self.angio[self.current_frame],self.prediction_clipping_points[str(self.current_frame)],self.metadata).__predict__()
+                distance=0
+                predictie , distance = DEMO_PredicitionClass_seg(self.angio[self.current_frame],self.prediction_clipping_points[str(self.current_frame)],self.metadata).__predict__()
                 self.dist.setText(str(distance))
                 
                 for x, y in zip(predictie['x'], predictie['y']):

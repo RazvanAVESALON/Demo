@@ -20,9 +20,9 @@ class AngioClass(torch.utils.data.Dataset):
     def __getitem__(self, idx):
         img =self.angio
         clipping_points= self.clipping_point
-
+        print (type(clipping_points), clipping_points)
         target = np.zeros(img.shape, dtype=np.uint8)
-        target = cv2.circle(target, [clipping_points[1], clipping_points[0]], 8, [255, 255, 255], -1)
+        target = cv2.circle(target, [float(clipping_points[1]), float(clipping_points[0])], 8, [255, 255, 255], -1)
 
         target = target/255
         new_img = img/255
